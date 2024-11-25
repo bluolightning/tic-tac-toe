@@ -7,13 +7,19 @@ const gameboard = {};
     }
 })();
 
-function Player(name, target) {
-    this.name = name;
-    this.target = target;
+function createPlayer(name, target) {
+    return {
+        name,
+        target,
+        displayInfo() {
+            return `${name} plays as ${target}!`;
+        }
+    }
 }
 
-const pOne = new Player("James", "X");
-const pTwo = new Player("Narumi", "O");
+const pOne = createPlayer("James", "X");
+const pTwo = createPlayer("Narumi", "O");
 
-console.log(pOne.name);
+console.log(pOne.displayInfo());
+console.log(pTwo.displayInfo());
 console.log(gameboard);
