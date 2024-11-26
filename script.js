@@ -23,3 +23,25 @@ const pTwo = createPlayer("Narumi", "O");
 console.log(pOne.displayInfo());
 console.log(pTwo.displayInfo());
 console.log(gameboard);
+
+function play(slotNum) {
+    let xCount = 0;
+    let oCount = 0;
+    let slot = "slot" + slotNum;
+
+    for (spot in gameboard) {
+        if (gameboard[spot] === "X") {
+            xCount++;
+        } else if (gameboard[spot] === "O") {
+            oCount++;
+        }
+    }
+
+    if (xCount > oCount) {
+        gameboard[slot] = pTwo.target;
+    } else {
+        gameboard[slot] = pOne.target;
+    }
+    
+    console.log(gameboard);
+}
