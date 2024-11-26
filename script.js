@@ -88,9 +88,11 @@ function winLose() {
         if (condition === "XXX") {
             winLabel.textContent = pOne.name + " wins!";
             xScore++;
+            document.querySelector(".xScore").textContent = xScore;
         } else if (condition === "OOO") {
             winLabel.textContent = pTwo.name + " wins!";
             oScore++;
+            document.querySelector(".oScore").textContent = oScore;
         }
     }
 }
