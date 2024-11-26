@@ -8,12 +8,10 @@ const gameboard = {};
 
         let div = document.createElement("div");
         document.querySelector(".container").appendChild(div);
-        div.className = propertyname;
         div.setAttribute("class", propertyname)
 
         div.addEventListener("click", function () {
-            let slotNum = div.getAttribute("class").replace("slot", "");
-            play(slotNum);
+            play(propertyname);
         });
     }
 
@@ -37,10 +35,9 @@ const pTwo = createPlayer("Bob", "O");
 console.log(pOne.displayInfo());
 console.log(pTwo.displayInfo());
 
-function play(slotNum) {
+function play(slot) {
     let xCount = 0;
     let oCount = 0;
-    let slot = "slot" + slotNum;
 
     if (slot === "empty") {
         console.log("You can't play that slot!");
@@ -48,18 +45,17 @@ function play(slotNum) {
         for (spot in gameboard) {
             if (gameboard[spot] === "X") {
                 xCount++;
-                document.querySelector(`.${spot}`).classList.add("xSelect");
             } else if (gameboard[spot] === "O") {
                 oCount++;
-                document.querySelector(`.${spot}`).classList.add("oSelect");
             }
         }
 
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
-            
+            document.querySelector(`.${slot}`).classList.add("xSelect");
         } else {
             gameboard[slot] = pOne.target;
+            document.querySelector(`.${slot}`).classList.add("oSelect");
         }
     }
     
