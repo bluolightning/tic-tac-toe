@@ -1,10 +1,18 @@
 const gameboard = {};
 
+// Create the gameboard
 (function createGameboard() {
     for (let i = 1; i <= 9; i++) {
         let propertyname = "slot" + i;
         gameboard[propertyname] = "empty";
+
+        let div = document.createElement("div");
+        document.querySelector(".container").appendChild(div);
+        div.className = propertyname;
     }
+
+
+    
 })();
 
 function createPlayer(name, target) {

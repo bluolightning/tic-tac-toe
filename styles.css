@@ -1,3 +1,19 @@
 * {
     background-color: black;
+    box-sizing: border-box;
+}
+
+:root {
+    --size: 150px;
+}
+
+.container > div {
+    height: var(--size);
+    width: var(--size);
+    border: 1px solid white;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: var(--size) var(--size) var(--size);
 }
