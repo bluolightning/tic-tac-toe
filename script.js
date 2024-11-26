@@ -1,7 +1,7 @@
 const gameboard = {};
 
 (function createGameboard() {
-    for (let i = 1; i <= 8; i++) {
+    for (let i = 1; i <= 9; i++) {
         let propertyname = "slot" + i;
         gameboard[propertyname] = "empty";
     }
