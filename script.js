@@ -49,13 +49,17 @@ function play(slot) {
                 oCount++;
             }
         }
-        
+
+        let slotSelector = document.querySelector(`.${slot}`);
+
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
-            document.querySelector(`.${slot}`).classList.add("oSelect");
+            slotSelector.classList.add("oSelect");
+            slotSelector.textContent = "O";
         } else {
             gameboard[slot] = pOne.target;
-            document.querySelector(`.${slot}`).classList.add("xSelect");
+            slotSelector.classList.add("xSelect");
+            slotSelector.textContent = "X";
         }
 
         winLose();
