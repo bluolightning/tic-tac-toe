@@ -9,6 +9,12 @@ const gameboard = {};
         let div = document.createElement("div");
         document.querySelector(".container").appendChild(div);
         div.className = propertyname;
+        div.setAttribute("class", propertyname)
+
+        div.addEventListener("click", function () {
+            let slotNum = div.getAttribute("class").replace("slot", "");
+            play(slotNum);
+        });
     }
 
 
@@ -78,3 +84,5 @@ function winLose() {
         }
     }
 }
+
+

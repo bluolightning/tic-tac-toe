@@ -1,5 +1,4 @@
 * {
-    background-color: black;
     box-sizing: border-box;
 }
 
@@ -10,10 +9,18 @@
 .container > div {
     height: var(--size);
     width: var(--size);
-    border: 1px solid white;
+    border: 2px solid black;
 }
 
 .container {
     display: grid;
     grid-template-columns: var(--size) var(--size) var(--size);
+}
+
+.xSelect {
+    background-color: blue;
+}
+
+.oSelect {
+    background-color: red;
 }
