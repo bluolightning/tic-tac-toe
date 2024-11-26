@@ -16,6 +16,7 @@
     justify-content: center;
     align-items: center;
     font-size: 48px;
+    background-color: white;
 }
 
 .container {
@@ -30,22 +31,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: aqua;
 }
 
 .ui {
     flex: 1;
-    background-color: aqua;
 }
 
 .gameResults {
     max-width: 300px;
 }
 
-.xSelect {
+div.xSelect {
     background-color: blue;
 }
 
-.oSelect {
+div.oSelect {
     background-color: red;
 }
 
