@@ -49,8 +49,8 @@ function play(slot) {
             }
         }
 
-        let slotSelector = document.querySelector(`.${slot}`);
-        let currentPlayer = document.querySelector(".currentPlayer");
+        const slotSelector = document.querySelector(`.${slot}`);
+        const currentPlayer = document.querySelector(".currentPlayer");
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
             slotSelector.classList.add("oSelect");
@@ -80,11 +80,17 @@ function winLose() {
         (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
     ]
 
+    const winLabel = document.querySelector(".winLabel");
+    let xScore = 0;
+    let oScore = 0;
+
     for (let condition of winConditions) {
         if (condition === "XXX") {
-            console.log(pOne.name + "wins!");
+            winLabel.textContent = pOne.name + " wins!";
+            xScore++;
         } else if (condition === "OOO") {
-            console.log(pTwo.name + "wins!");
+            winLabel.textContent = pTwo.name + " wins!";
+            oScore++;
         }
     }
 }
