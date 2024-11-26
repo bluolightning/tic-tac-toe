@@ -43,7 +43,7 @@ function play(slotNum) {
     let oCount = 0;
     let slot = "slot" + slotNum;
 
-    if (slot != "empty") {
+    if (slot === "empty") {
         console.log("You can't play that slot!");
     } else {
         for (spot in gameboard) {
