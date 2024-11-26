@@ -36,7 +36,6 @@ const pTwo = createPlayer("Bob", "O");
 
 console.log(pOne.displayInfo());
 console.log(pTwo.displayInfo());
-console.log(gameboard);
 
 function play(slotNum) {
     let xCount = 0;
@@ -49,13 +48,16 @@ function play(slotNum) {
         for (spot in gameboard) {
             if (gameboard[spot] === "X") {
                 xCount++;
+                document.querySelector(`.${spot}`).classList.add("xSelect");
             } else if (gameboard[spot] === "O") {
                 oCount++;
+                document.querySelector(`.${spot}`).classList.add("oSelect");
             }
         }
 
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
+            
         } else {
             gameboard[slot] = pOne.target;
         }
