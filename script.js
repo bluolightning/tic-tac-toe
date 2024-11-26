@@ -14,11 +14,9 @@ const gameboard = {};
             play(propertyname);
         });
     }
-
-
-    
 })();
 
+// Create players
 function createPlayer(name, target) {
     return {
         name,
@@ -35,6 +33,7 @@ const pTwo = createPlayer("Bob", "O");
 console.log(pOne.displayInfo());
 console.log(pTwo.displayInfo());
 
+// Selects a gameboard spot
 function play(slot) {
     let xCount = 0;
     let oCount = 0;
@@ -51,21 +50,24 @@ function play(slot) {
         }
 
         let slotSelector = document.querySelector(`.${slot}`);
-
+        let currentPlayer = document.querySelector(".currentPlayer");
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
             slotSelector.classList.add("oSelect");
             slotSelector.textContent = "O";
+            currentPlayer.textContent = "X";
         } else {
             gameboard[slot] = pOne.target;
             slotSelector.classList.add("xSelect");
             slotSelector.textContent = "X";
+            currentPlayer.textContent = "O";
         }
 
         winLose();
     }
 }
 
+// Decides if a player has won
 function winLose() {
     const winConditions = [
         (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
