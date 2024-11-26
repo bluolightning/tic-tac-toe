@@ -61,22 +61,22 @@ function play(slotNum) {
         }
     }
     
-    console.log(gameboard);
+    winLose();
 }
 
 function winLose() {
-    const winConditions = {
-        win1: (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
-        win2: (gameboard.slot4 + gameboard.slot5 + gameboard.slot6),
-        win3: (gameboard.slot7 + gameboard.slot8 + gameboard.slot9),
-        win4: (gameboard.slot1 + gameboard.slot4 + gameboard.slot7),
-        win5: (gameboard.slot2 + gameboard.slot5 + gameboard.slot8),
-        win6: (gameboard.slot3 + gameboard.slot6 + gameboard.slot9),
-        win7: (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
-        win8: (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
-    };
+    const winConditions = [
+        (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
+        (gameboard.slot4 + gameboard.slot5 + gameboard.slot6),
+        (gameboard.slot7 + gameboard.slot8 + gameboard.slot9),
+        (gameboard.slot1 + gameboard.slot4 + gameboard.slot7),
+        (gameboard.slot2 + gameboard.slot5 + gameboard.slot8),
+        (gameboard.slot3 + gameboard.slot6 + gameboard.slot9),
+        (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
+        (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
+    ]
 
-    for (condition in winConditions) {
+    for (let condition of winConditions) {
         if (condition === "XXX") {
             console.log(pOne.name + "wins!");
         } else if (condition === "OOO") {
