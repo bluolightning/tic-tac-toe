@@ -29,18 +29,22 @@ function play(slotNum) {
     let oCount = 0;
     let slot = "slot" + slotNum;
 
-    for (spot in gameboard) {
-        if (gameboard[spot] === "X") {
-            xCount++;
-        } else if (gameboard[spot] === "O") {
-            oCount++;
-        }
-    }
-
-    if (xCount > oCount) {
-        gameboard[slot] = pTwo.target;
+    if (slot != "empty") {
+        console.log("You can't play that slot!");
     } else {
-        gameboard[slot] = pOne.target;
+        for (spot in gameboard) {
+            if (gameboard[spot] === "X") {
+                xCount++;
+            } else if (gameboard[spot] === "O") {
+                oCount++;
+            }
+        }
+
+        if (xCount > oCount) {
+            gameboard[slot] = pTwo.target;
+        } else {
+            gameboard[slot] = pOne.target;
+        }
     }
     
     console.log(gameboard);
