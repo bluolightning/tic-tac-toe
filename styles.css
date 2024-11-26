@@ -1,11 +1,18 @@
+:root {
+    --size: 200px;
+}
+
 * {
     box-sizing: border-box;
     line-height: 1.5;
     margin: 0;
 }
 
-:root {
-    --size: 200px;
+body {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
 }
 
 .container > div {
@@ -34,14 +41,26 @@
     background-color: aqua;
 }
 
-.ui {
+.info {
     flex: 1;
 }
 
 .gameResults {
-    max-width: 300px;
+    height: 50vh;
+    width: 30vw;
+    text-align: center;
+    border: 1px solid black;
 }
 
+h4 {
+    display: inline;
+    font-size: 200px;
+}
+
+.dash {
+    padding: 0 24px;
+}
+/* Colors selected board squares */
 div.xSelect {
     background-color: blue;
 }
@@ -50,13 +69,20 @@ div.oSelect {
     background-color: red;
 }
 
-.gameResults {
-    border: 1px solid black;
+/* Create an underline based on whose turn it is */
+.xTurn, .oTurn { 
+    position: relative; /* Required for the pseudo-element */
 }
 
-body {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    padding: 10px;
+.xTurn::after, .oTurn::After {
+    content: ""; /* Creates a decorative pseudo-element */
+    position: absolute;
+    left: 0;
+    bottom: 10px; /* Adjust this if needed */
+    width: 100%; /* Covers the full width of the text */
+    height: 10px; /* Thickness of the underline */
+    background-color: orange;
+    border-radius: 5px; /* Makes the underline rounded */
+    transform: translateY(5px); /* Adjust to move the underline away from the text */
+    z-index: -1; /* Keeps it behind the text */
 }
