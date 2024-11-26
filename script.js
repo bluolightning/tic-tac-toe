@@ -39,7 +39,7 @@ function play(slot) {
     let xCount = 0;
     let oCount = 0;
 
-    if (slot === "empty") {
+    if (gameboard[slot] != "empty") {
         console.log("You can't play that slot!");
     } else {
         for (spot in gameboard) {
@@ -49,7 +49,7 @@ function play(slot) {
                 oCount++;
             }
         }
-
+        
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
             document.querySelector(`.${slot}`).classList.add("oSelect");
@@ -57,9 +57,9 @@ function play(slot) {
             gameboard[slot] = pOne.target;
             document.querySelector(`.${slot}`).classList.add("xSelect");
         }
+
+        winLose();
     }
-    
-    winLose();
 }
 
 function winLose() {
