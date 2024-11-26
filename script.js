@@ -52,10 +52,10 @@ function play(slot) {
 
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
-            document.querySelector(`.${slot}`).classList.add("xSelect");
+            document.querySelector(`.${slot}`).classList.add("oSelect");
         } else {
             gameboard[slot] = pOne.target;
-            document.querySelector(`.${slot}`).classList.add("oSelect");
+            document.querySelector(`.${slot}`).classList.add("xSelect");
         }
     }
     
