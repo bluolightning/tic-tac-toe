@@ -95,3 +95,12 @@ div.oSelect {
     transform: translateY(5px); /* Adjust to move the underline away from the text */
     z-index: -1; /* Keeps it behind the text */
 }
+
+form > div {
+    margin: 20px 0;
+}
+
+input {
+    border-radius: 8px;
+    border: 1px solid black;
+}
