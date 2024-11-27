@@ -81,20 +81,42 @@ function winLose() {
     ]
 
     const winLabel = document.querySelector(".winLabel");
-    let xScore = 0;
-    let oScore = 0;
+    let xScore = document.querySelector(".xScore");
+    let oScore = document.querySelector(".oScore");
 
     for (let condition of winConditions) {
         if (condition === "XXX") {
             winLabel.textContent = pOne.name + " wins!";
-            xScore++;
-            document.querySelector(".xScore").textContent = xScore;
+            if (xScore.textContent === "X") {
+                xScore.textContent = "1";
+            } else {
+                let score = Number(xScore.textContent);
+                score++
+                xScore.textContent = score;
+            }
         } else if (condition === "OOO") {
             winLabel.textContent = pTwo.name + " wins!";
-            oScore++;
-            document.querySelector(".oScore").textContent = oScore;
+            if (oScore.textContent === "O") {
+                oScore.textContent = "1";
+            } else {
+                let score = Number(oScore.textContent);
+                score++
+                oScore.textContent = score;
+            }
         }
     }
 }
 
+document.querySelector(".reset").addEventListener("click", function () {
+    for (let i = 1; i <= 9; i++) {
+        let slot = "slot" + i;
+        const slotSelector = document.querySelector(`.${slot}`);
 
+
+        gameboard[slot] = "empty";
+        slotSelector.classList.remove("oSelect");
+        slotSelector.classList.remove("xSelect");
+        slotSelector.textContent = "";
+        document.querySelector(".winLabel").textContent = "";
+    }
+});
