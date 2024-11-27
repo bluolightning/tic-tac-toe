@@ -61,6 +61,9 @@ function play(slot) {
     if (gameboard[slot] != "empty" || roundEnd) {
         console.log("You can't play that!");
         
+        if (roundEnd) {
+            document.querySelector(".reset").style.border = "5px solid orange";
+        }
     } else {
         for (spot in gameboard) {
             if (gameboard[spot] === "X") {
