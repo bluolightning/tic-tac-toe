@@ -53,12 +53,14 @@ document.querySelector(".submit").addEventListener("click", function(event) {
 });
 
 // Selects a gameboard spot
+let roundEnd = false;
 function play(slot) {
     let xCount = 0;
     let oCount = 0;
 
-    if (gameboard[slot] != "empty") {
-        console.log("You can't play that slot!");
+    if (gameboard[slot] != "empty" || roundEnd) {
+        console.log("You can't play that!");
+        
     } else {
         for (spot in gameboard) {
             if (gameboard[spot] === "X") {
@@ -68,6 +70,7 @@ function play(slot) {
             }
         }
 
+        // Select whose turn it is
         const slotSelector = document.querySelector(`.${slot}`);
         const currentPlayer = document.querySelector(".currentPlayer");
         if (xCount > oCount) {
@@ -108,6 +111,7 @@ function play(slot) {
                     score++
                     xScore.textContent = score;
                 }
+                roundEnd = true;
             } else if (condition === "OOO") {
                 winLabel.textContent = pTwo.name + " wins!";
                 if (oScore.textContent === "O") {
@@ -117,6 +121,7 @@ function play(slot) {
                     score++
                     oScore.textContent = score;
                 }
+                roundEnd = true;
             }
         }
     }
@@ -127,6 +132,7 @@ document.querySelector(".reset").addEventListener("click", function () {
     for (let i = 1; i <= 9; i++) {
         let slot = "slot" + i;
         const slotSelector = document.querySelector(`.${slot}`);
+        roundEnd = false;
 
         gameboard[slot] = "empty";
         slotSelector.classList.remove("oSelect");
