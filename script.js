@@ -62,7 +62,7 @@ function play(slot) {
         console.log("You can't play that!");
         
         if (roundEnd) {
-            document.querySelector(".reset").style.border = "5px solid orange";
+            document.querySelector(".reset").style.border = "5px solid #FF9F1C";
         }
     } else {
         for (spot in gameboard) {
@@ -146,7 +146,7 @@ document.querySelector(".reset").addEventListener("click", function () {
         slotSelector.textContent = "";
         document.querySelector(".winLabel").textContent = "";
         document.querySelector(".currentPlayer").textContent = "X";
-        xScore.classList.add("turn");
-        oScore.classList.remove("turn");
+        document.querySelector(".xScore").classList.add("turn");
+        document.querySelector(".oScore").classList.remove("turn");
     }
 });

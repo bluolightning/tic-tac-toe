@@ -13,6 +13,7 @@ body {
     height: 100vh;
     width: 100vw;
     padding: 10px;
+    background-color: #CBF3F0;
 }
 
 .container > div {
@@ -39,7 +40,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
+    background-color: #2EC4B6;
 }
 
 .info {
@@ -90,7 +91,7 @@ div.oSelect {
     bottom: 10px; /* Adjust this if needed */
     width: 100%; /* Covers the full width of the text */
     height: 10px; /* Thickness of the underline */
-    background-color: orange;
+    background-color: #FF9F1C;
     border-radius: 5px; /* Makes the underline rounded */
     transform: translateY(5px); /* Adjust to move the underline away from the text */
     z-index: -1; /* Keeps it behind the text */
@@ -107,4 +108,11 @@ input {
 
 .hidden {
     display: none;
+}
+
+button {
+    width: 10em;
+    height: 3em;
+    border-radius: 1em;
+    border: 3px solid aqua;
 }
