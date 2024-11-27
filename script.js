@@ -60,7 +60,6 @@ function play(slot) {
 
     if (gameboard[slot] != "empty" || roundEnd) {
         console.log("You can't play that!");
-        
         if (roundEnd) {
             document.querySelector(".reset").style.border = "5px solid #FF9F1C";
         }
@@ -118,6 +117,7 @@ function play(slot) {
                     xScore.textContent = score;
                 }
                 roundEnd = true;
+                return;
             } else if (condition === "OOO") {
                 winLabel.textContent = pTwo.name + " wins!";
                 if (oScore.textContent === "O") {
@@ -128,8 +128,13 @@ function play(slot) {
                     oScore.textContent = score;
                 }
                 roundEnd = true;
-            }
-        }
+                return;
+            } else if ((xCount + oCount) >= 8) {
+                roundEnd = true;
+                winLabel.textContent = "It's a tie!";
+                return;
+            } 
+        } 
     }
 }
 
