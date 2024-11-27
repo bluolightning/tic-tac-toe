@@ -56,16 +56,6 @@ document.querySelector(".submit").addEventListener("click", function(event) {
 function play(slot) {
     let xCount = 0;
     let oCount = 0;
-    const winConditions = [
-        (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
-        (gameboard.slot4 + gameboard.slot5 + gameboard.slot6),
-        (gameboard.slot7 + gameboard.slot8 + gameboard.slot9),
-        (gameboard.slot1 + gameboard.slot4 + gameboard.slot7),
-        (gameboard.slot2 + gameboard.slot5 + gameboard.slot8),
-        (gameboard.slot3 + gameboard.slot6 + gameboard.slot9),
-        (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
-        (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
-    ]
 
     if (gameboard[slot] != "empty") {
         console.log("You can't play that slot!");
@@ -92,11 +82,23 @@ function play(slot) {
             currentPlayer.textContent = "O";
         }
 
+        // winlose() function merge
+        const winConditions = [
+            (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
+            (gameboard.slot4 + gameboard.slot5 + gameboard.slot6),
+            (gameboard.slot7 + gameboard.slot8 + gameboard.slot9),
+            (gameboard.slot1 + gameboard.slot4 + gameboard.slot7),
+            (gameboard.slot2 + gameboard.slot5 + gameboard.slot8),
+            (gameboard.slot3 + gameboard.slot6 + gameboard.slot9),
+            (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
+            (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
+        ]
+    
+        const winLabel = document.querySelector(".winLabel");
+        let xScore = document.querySelector(".xScore");
+        let oScore = document.querySelector(".oScore");
+    
         for (let condition of winConditions) {
-            let xScore = document.querySelector(".xScore");
-            let oScore = document.querySelector(".oScore");
-            const winLabel = document.querySelector(".winLabel");
-            
             if (condition === "XXX") {
                 winLabel.textContent = pOne.name + " wins!";
                 if (xScore.textContent === "X") {
@@ -119,6 +121,7 @@ function play(slot) {
         }
     }
 }
+
 
 document.querySelector(".reset").addEventListener("click", function () {
     for (let i = 1; i <= 9; i++) {
