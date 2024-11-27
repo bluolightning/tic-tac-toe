@@ -148,5 +148,6 @@ document.querySelector(".reset").addEventListener("click", function () {
         document.querySelector(".currentPlayer").textContent = "X";
         document.querySelector(".xScore").classList.add("turn");
         document.querySelector(".oScore").classList.remove("turn");
+        document.querySelector(".winLabel").textContent = pOne.displayInfo() + " and " + pTwo.displayInfo();
     }
 });
