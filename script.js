@@ -17,13 +17,14 @@ const gameboard = {};
 })();
 
 // Create players
-function createPlayer(name, target) {
-    return {
-        name,
-        target,
-        displayInfo() {
-            return `${name} plays as ${target}!`;
-        }
+class createPlayer {
+    constructor(name, target) {
+        this.name = name;
+        this.target = target;
+    }
+
+    displayInfo() {
+        return `${this.name} plays as ${this.target}!`;
     }
 }
 
@@ -42,8 +43,8 @@ document.querySelector(".submit").addEventListener("click", function(event) {
         oName = "___";
     }
 
-    pOne = createPlayer(xName, "X");
-    pTwo = createPlayer(oName, "O");
+    pOne = new createPlayer(xName, "X");
+    pTwo = new createPlayer(oName, "O");
 
     document.querySelector(".winLabel").textContent = pOne.displayInfo() + " and " + pTwo.displayInfo();
 
