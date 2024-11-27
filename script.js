@@ -56,6 +56,16 @@ document.querySelector(".submit").addEventListener("click", function(event) {
 function play(slot) {
     let xCount = 0;
     let oCount = 0;
+    const winConditions = [
+        (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
+        (gameboard.slot4 + gameboard.slot5 + gameboard.slot6),
+        (gameboard.slot7 + gameboard.slot8 + gameboard.slot9),
+        (gameboard.slot1 + gameboard.slot4 + gameboard.slot7),
+        (gameboard.slot2 + gameboard.slot5 + gameboard.slot8),
+        (gameboard.slot3 + gameboard.slot6 + gameboard.slot9),
+        (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
+        (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
+    ]
 
     if (gameboard[slot] != "empty") {
         console.log("You can't play that slot!");
@@ -82,46 +92,29 @@ function play(slot) {
             currentPlayer.textContent = "O";
         }
 
-        winLose();
-    }
-}
-
-// Decides if a player has won
-function winLose() {
-    const winConditions = [
-        (gameboard.slot1 + gameboard.slot2 + gameboard.slot3),
-        (gameboard.slot4 + gameboard.slot5 + gameboard.slot6),
-        (gameboard.slot7 + gameboard.slot8 + gameboard.slot9),
-        (gameboard.slot1 + gameboard.slot4 + gameboard.slot7),
-        (gameboard.slot2 + gameboard.slot5 + gameboard.slot8),
-        (gameboard.slot3 + gameboard.slot6 + gameboard.slot9),
-        (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
-        (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
-    ]
-
-    const winLabel = document.querySelector(".winLabel");
-    let xScore = document.querySelector(".xScore");
-    let oScore = document.querySelector(".oScore");
-    let resetButton = document.querySelector(".reset");
-
-    for (let condition of winConditions) {
-        if (condition === "XXX") {
-            winLabel.textContent = pOne.name + " wins!";
-            if (xScore.textContent === "X") {
-                xScore.textContent = "1";
-            } else {
-                let score = Number(xScore.textContent);
-                score++
-                xScore.textContent = score;
-            }
-        } else if (condition === "OOO") {
-            winLabel.textContent = pTwo.name + " wins!";
-            if (oScore.textContent === "O") {
-                oScore.textContent = "1";
-            } else {
-                let score = Number(oScore.textContent);
-                score++
-                oScore.textContent = score;
+        for (let condition of winConditions) {
+            let xScore = document.querySelector(".xScore");
+            let oScore = document.querySelector(".oScore");
+            const winLabel = document.querySelector(".winLabel");
+            
+            if (condition === "XXX") {
+                winLabel.textContent = pOne.name + " wins!";
+                if (xScore.textContent === "X") {
+                    xScore.textContent = "1";
+                } else {
+                    let score = Number(xScore.textContent);
+                    score++
+                    xScore.textContent = score;
+                }
+            } else if (condition === "OOO") {
+                winLabel.textContent = pTwo.name + " wins!";
+                if (oScore.textContent === "O") {
+                    oScore.textContent = "1";
+                } else {
+                    let score = Number(oScore.textContent);
+                    score++
+                    oScore.textContent = score;
+                }
             }
         }
     }
