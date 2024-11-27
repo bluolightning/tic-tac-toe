@@ -79,11 +79,11 @@ div.oSelect {
 }
 
 /* Create an underline based on whose turn it is */
-.xTurn, .oTurn { 
+.turn { 
     position: relative; /* Required for the pseudo-element */
 }
 
-.xTurn::after, .oTurn::After {
+.turn::after, .turn::After {
     content: ""; /* Creates a decorative pseudo-element */
     position: absolute;
     left: 0;

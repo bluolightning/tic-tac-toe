@@ -76,16 +76,22 @@ function play(slot) {
         // Select whose turn it is
         const slotSelector = document.querySelector(`.${slot}`);
         const currentPlayer = document.querySelector(".currentPlayer");
+        let xScore = document.querySelector(".xScore");
+        let oScore = document.querySelector(".oScore");
         if (xCount > oCount) {
             gameboard[slot] = pTwo.target;
             slotSelector.classList.add("oSelect");
             slotSelector.textContent = "O";
             currentPlayer.textContent = "X";
+            xScore.classList.add("turn");
+            oScore.classList.remove("turn");
         } else {
             gameboard[slot] = pOne.target;
             slotSelector.classList.add("xSelect");
             slotSelector.textContent = "X";
             currentPlayer.textContent = "O";
+            xScore.classList.remove("turn");
+            oScore.classList.add("turn");
         }
 
         // winlose() function merge
@@ -99,10 +105,7 @@ function play(slot) {
             (gameboard.slot1 + gameboard.slot5 + gameboard.slot9),
             (gameboard.slot3 + gameboard.slot5 + gameboard.slot7)
         ]
-    
         const winLabel = document.querySelector(".winLabel");
-        let xScore = document.querySelector(".xScore");
-        let oScore = document.querySelector(".oScore");
     
         for (let condition of winConditions) {
             if (condition === "XXX") {
@@ -143,5 +146,7 @@ document.querySelector(".reset").addEventListener("click", function () {
         slotSelector.textContent = "";
         document.querySelector(".winLabel").textContent = "";
         document.querySelector(".currentPlayer").textContent = "X";
+        xScore.classList.add("turn");
+        oScore.classList.remove("turn");
     }
 });
