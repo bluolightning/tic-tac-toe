@@ -83,6 +83,7 @@ function winLose() {
     const winLabel = document.querySelector(".winLabel");
     let xScore = document.querySelector(".xScore");
     let oScore = document.querySelector(".oScore");
+    let resetButton = document.querySelector(".reset");
 
     for (let condition of winConditions) {
         if (condition === "XXX") {
@@ -94,6 +95,7 @@ function winLose() {
                 score++
                 xScore.textContent = score;
             }
+            resetButton.click();
         } else if (condition === "OOO") {
             winLabel.textContent = pTwo.name + " wins!";
             if (oScore.textContent === "O") {
@@ -103,6 +105,7 @@ function winLose() {
                 score++
                 oScore.textContent = score;
             }
+            resetButton.click();
         }
     }
 }
@@ -112,11 +115,11 @@ document.querySelector(".reset").addEventListener("click", function () {
         let slot = "slot" + i;
         const slotSelector = document.querySelector(`.${slot}`);
 
-
         gameboard[slot] = "empty";
         slotSelector.classList.remove("oSelect");
         slotSelector.classList.remove("xSelect");
         slotSelector.textContent = "";
         document.querySelector(".winLabel").textContent = "";
+        document.querySelector(".currentPlayer").textContent = "X";
     }
 });
