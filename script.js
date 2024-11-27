@@ -16,6 +16,36 @@ const gameboard = {};
     }
 })();
 
+// Create players
+function createPlayer(name, target) {
+    return {
+        name,
+        target,
+        displayInfo() {
+            return `${name} plays as ${target}!`;
+        }
+    }
+}
+
+let pOne;
+let pTwo;
+
+document.querySelector(".submit").addEventListener("click", function(event) {
+    event.preventDefault();
+    xName = document.getElementById("playerX").value;
+    oName = document.getElementById("playerO").value;
+
+    pOne = createPlayer(xName, "X");
+    pTwo = createPlayer(oName, "O");
+
+    console.log(pOne.displayInfo());
+    console.log(pTwo.displayInfo());
+
+    document.querySelector(".hidden").classList.remove("hidden");
+    document.querySelector(".hidden").classList.remove("hidden");
+    document.querySelector("form").classList.add("hidden");
+});
+
 // Selects a gameboard spot
 function play(slot) {
     let xCount = 0;
@@ -105,31 +135,4 @@ document.querySelector(".reset").addEventListener("click", function () {
         document.querySelector(".winLabel").textContent = "";
         document.querySelector(".currentPlayer").textContent = "X";
     }
-});
-
-// Create players
-function createPlayer(name, target) {
-    return {
-        name,
-        target,
-        displayInfo() {
-            return `${name} plays as ${target}!`;
-        }
-    }
-}
-
-let pOne;
-let pTwo;
-
-document.querySelector(".submit").addEventListener("click", function(event) {
-    event.preventDefault();
-    xName = document.getElementById("playerX").value;
-    oName = document.getElementById("playerO").value;
-
-    pOne = createPlayer(xName, "X");
-    pTwo = createPlayer(oName, "O");
-
-    console.log(pOne.displayInfo());
-    console.log(pTwo.displayInfo());
-
 });
