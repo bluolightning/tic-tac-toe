@@ -151,3 +151,10 @@ document.querySelector(".reset").addEventListener("click", function () {
         document.querySelector(".winLabel").textContent = pOne.displayInfo() + " and " + pTwo.displayInfo();
     }
 });
+
+document.querySelector(".reload").addEventListener("click", function () {
+    let reload = confirm("Do you want to reload the page? (All progress will be lost)");
+    if (reload) {
+        location.reload();
+    }
+});
