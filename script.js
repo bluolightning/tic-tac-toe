@@ -35,11 +35,17 @@ document.querySelector(".submit").addEventListener("click", function(event) {
     xName = document.getElementById("playerX").value;
     oName = document.getElementById("playerO").value;
 
+    if (xName === "") {
+        xName = "___";
+    } 
+    if (oName === "") {
+        oName = "___";
+    }
+
     pOne = createPlayer(xName, "X");
     pTwo = createPlayer(oName, "O");
 
-    console.log(pOne.displayInfo());
-    console.log(pTwo.displayInfo());
+    document.querySelector(".winLabel").textContent = pOne.displayInfo() + " and " + pTwo.displayInfo();
 
     document.querySelector(".hidden").classList.remove("hidden");
     document.querySelector(".hidden").classList.remove("hidden");
@@ -108,7 +114,6 @@ function winLose() {
                 score++
                 xScore.textContent = score;
             }
-            resetButton.click();
         } else if (condition === "OOO") {
             winLabel.textContent = pTwo.name + " wins!";
             if (oScore.textContent === "O") {
@@ -118,7 +123,6 @@ function winLose() {
                 score++
                 oScore.textContent = score;
             }
-            resetButton.click();
         }
     }
 }
